@@ -187,10 +187,123 @@ let speeds = result;
     return product.type === 'Electronics';
   });
 
-  console.log(filteredResults);
+  //console.log(filteredResults);
+  const users = [
+  {
+    "id": 1,
+    "name": "Leanne Graham",
+    "username": "Bret",
+    "email": "Sincere@april.biz",
+    "address": {
+        "country":"United state of America",
+        "street": "Kulas Light",
+        "suite": "Apt. 556",
+        "city": "Gwenborough",
+        "zipcode": "92998-3874",
+    },
+    "phone": "1-770-736-8031 x56442",
+    "website": "hildegard.org", 
+    "social_account": "twitter, facebook, instagram",
+    "joined": "22 june 2022",
+    "newsletter": false
 
+},
+{
+    "id": 2,
+    "name": "Ervin Howell",
+    "username": "Antonette",
+    "email": "Shanna@melissa.tv",
+    "address": {
+        "country":"United kingdom",
+        "street": "Victor Plains",
+        "suite": "Suite 879",
+        "city": "Nevada",
+        "zipcode": "90566-7771",
+    },
+    "phone": "010-692-6593 x09125",
+    "website": "anastasia.net",
+    "social_account": "twitter, facebook, whatsapp, youtube",
+    "joined": "22 March 2009",
+    "newsletter": true
+},
+{
+    "id": 3,
+    "name": "Clementine Bauch",
+    "username": "Samantha",
+    "email": "Nathan@yesenia.net",
+    "address": {
+        "country":"United state of America",
+        "street": "Douglas Extension",
+        "suite": "Suite 847",
+        "city": "McKenziehaven",
+        "zipcode": "59590-4157",
+    },
+    "phone":"1-463-123-4447",
+    "website":"ramiro.info",
+    "social_account": "instagram, youtube",
+    "joined": "22 june 2022",
+    "newsletter": false
+},
+{
+    "id": 4,
+    "name": "Patricia Lebsack",
+    "username": "Karianne",
+    "email": "Julianne.OConner@kory.org",
+    "address": {
+        "country":"United state of America",
+        "street": "Hoeger Mall",
+        "suite": "Apt. 692",
+        "city": "Nevada",
+        "zipcode": "53919-4257",
+    },
+    "phone": "493-170-9623 x156",
+    "website": "kale.biz",
+    "social_account": "",
+    "joined": "01 june 1993",
+    "newsletter": false
+    }
+];
 
+//filter users, get user joined on 22 june 2022 and having country is United state of America
 
+const getUser = users.filter( function(user){
+    return (user.joined === '22 june 2022' &&
+            user.address.country === 'United state of America');
+});
+//console.log(getUser.id); //id 1,3
+
+/*-----------------------------------------------------------------------------------*/
+//filter posts & comments
+const Userposts = { id: 2, title: 'Post 1'};
+const comments = [
+    { postId: 1, comment: 'Awesome' },
+    { postId: 2, comment: 'nice blog' },
+    { postId: 2, comment: '🧡 Nice' }
+];
+
+//filter post that having comments
+// function postComments(userPosts, comments){
+//     userPosts.filter(function(userpost){
+//         userpost.id === 
+//     });
+// }
+// postComments(userPost, comments);
+
+/*-----------------------------------------------------------------------------------*/
+/*
+Filtering Values
+    Filter the array of numbers using the filter helper,
+    creating a new array that only contains numbers greater than 50.
+    Assign this new array to a variable called 'filteredNumbers'.
+    SDon't forget to use the 'return' keyword in the function!
+*/
+var numbersArr = [15, 25, 35, 45, 55, 65, 75, 85, 95];
+
+const filterNumber = numbersArr.filter(function(number){
+    return number > 50;
+});
+let filteredNumbers = filterNumber;
+console.log(filteredNumbers);
  
 
 
