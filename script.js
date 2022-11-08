@@ -143,7 +143,7 @@ var trips = [
     { distance: 59, time: 25 }
 ];
 
-const result = trips.map(function(r){
+let result = trips.map(function(r){
     return r.distance / r.time;
 });
 
@@ -274,8 +274,8 @@ const getUser = users.filter( function(user){
 
 /*-----------------------------------------------------------------------------------*/
 //filter posts & comments
-const Userposts = { id: 2, title: 'Post 1'};
-const comments = [
+let userPosts = { id: 2, title: 'Post 1'};
+let comments = [
     { postId: 1, comment: 'Awesome' },
     { postId: 2, comment: 'nice blog' },
     { postId: 2, comment: '🧡 Nice' }
@@ -303,7 +303,277 @@ const filterNumber = numbersArr.filter(function(number){
     return number > 50;
 });
 let filteredNumbers = filterNumber;
-console.log(filteredNumbers);
- 
+//console.log(filteredNumbers);
+
+
+
+/* ____________________________________(find)__________________________________________ */
+//with for loop
+const books = [
+    {
+        name: 'clean code'
+    },
+    {
+        name: 'the pragmatic programming'
+    },
+    {
+        name: 'code complete'
+    }, 
+    {
+        name: 'code hidden language of hanrdware and software' 
+    }
+];
+
+
+let find;
+
+// for(let i = 0; i < books.length; i++){
+//     if(books[i].name === 'clean code'){
+//         find = books[i];
+//         break;
+//     }
+// }
+// console.log(find);
+
+let getBookName = books.find(function(book){
+    return book.name === 'code complete';
+});
+
+//console.log(getBookName);
+
+
+function findCommentOfPost(userPosts, comments){
+    return comments.find(function(post){
+        return post.id === comments.postId;
+    });
+}
+
+//console.log(findCommentOfPost(userPosts, comments));
+
+
+/*-----------------------------------------
+__Finding Admin Users__
+Find the user in the users's array who is an admin.  Assign this user to the variable 'admin'.
+------------------------------------------*/
+const allUser = [
+    { id: 1, admin: false },
+    { id: 2, admin: true },
+    { id: 3, admin: true }
+  ];
+
+  const adminUser = allUser.find(function(user){
+   return user.admin === true;
+  });
+
+  let admin = adminUser;
+  //console.log(admin);
+
+  //Note : only return first instance and break
+
+
+
+  /* ____________________________________(every, some)__________________________________________ */
+
+let computers = [
+    {
+        name:'Apple',
+        ram: 32
+    },
+    {
+        name:'Asus',
+        ram: 16
+    },
+    {
+        name:'Acer',
+        ram: 8
+    },
+    {
+        name:'MSI',
+        ram: 64
+    },
+    {
+        name:'Lenovo',
+        ram: 8
+    }
+];
+let allCompotersCanRunProgramm = true;
+let onlySomeComputersCanRunProgramms = false;
+
+//using for
+for(let i = 0; i < computers.length; i++){
+    var computer = computers[i];
+
+    if(computer.ram > 8){
+        allCompotersCanRunProgramm = false;
+    }else{
+        onlySomeComputersCanRunProgramms = true;
+    }
+}
+//console.log(allCompotersCanRunProgramm);
+//console.log(onlySomeComputersCanRunProgramms);
+
+
+//using ___every(use && (AND) operator[every conditions to be true])___
+result = computers.every(function(computer){
+    return computer.ram > 16;
+});
+
+//console.log(result);
+
+//using ___some(use || (OR)) operators [if any condition to be true]___
+let someArr = computers.some(function(computer){
+    return computer.ram > 16;
+});
+
+//console.log(someArr);
+
+
+
+
+/* Every
+Finding Submitted Users 
+Given an array of users, return 'true' if every user has submitted a request form.  Assign the result to the variable 'hasSumbmitted'.
+*/
+var usersStatus = [
+    { id: 21, hasSubmitted: true },
+    { id: 62, hasSubmitted: false },
+    { id: 4, hasSubmitted: true }
+];
+
+result =  usersStatus.every(function(user){
+    return user.hasSubmitted === true;
+});
+
+let hasSumbmitted = result;
+
+//console.log(hasSumbmitted);
+
+
+
+/*some
+In Progress Network Requests
+Given an array of network objects representing network requests, 
+assign the boolean 'true' to the variable 'inProgress' if any network request has a
+'status' of 'pending'.
+*/
+
+var requests = [
+    { url: '/photos', status: 'complete' },
+    { url: '/albums', status: 'pending' },
+    { url: '/users', status: 'failed' }
+  ];
+
+  result = requests.some(function(request){
+    return request.status === 'pending';
+  });
+  
+  var inProgress = result;
+
+  //console.log(inProgress);
+
+
+
+
+/* ____________________________________(reduce)__________________________________________ */
+numbers = [10,20,30];
+sum = 0;
+
+/*
+
+for(let i=0; i<numbers.length; i++){
+    sum += numbers[i];
+}
+console.log(sum);
+
+*/
+
+// result = numbers.reduce(function(number){
+
+// }) 
+
+
+//using reduce
+result = numbers.reduce(function(sum, number){
+    return sum + number;
+}, 0);
+//console.log(result);
+
+
+
+
+
+//
+let colors = [
+    { color: 'red'},
+    { color: 'green'},
+    { color: 'yellow'}
+];
+
+result = colors.reduce(function(previous, colors){
+    previous.push(colors.color);
+    return previous;
+}, ['orange']);
+
+//console.log(result);
+
+/*_______________=========== balance parantheses problem  ============_________________ */
+
+function balanceParan(string){
+    return string.split("").reduce(function(previous, char){
+        if(char < 0){ return previous }
+        if(char === "("){ return ++previous; }
+        if(char === ")"){ return --previous; }
+        return previous;
+    },0);
+}
+
+// if( balanceParan(')(())(())(())(') === 0 ) {
+//     console.log('Paranthesis Balance');
+// }else{
+//     console.log('not balanced');
+// }
+
+result = balanceParan('))(');
+
+console.log(result);
+
+
+
+
+
+
+
+
+/*Reducing Properties     -TODO-
+Use the 'reduce' helper to create an object that tallies the number of sitting and standing desks. 
+The object returned should have the form '{ sitting: 3, standing: 2 }'.
+The initial value has been provided to you.
+Hint: Don't forget to return the accumulator object (the first argument to the iterator function)
+*/
+
+var desks = [
+    { type: 'sitting' },
+    { type: 'standing' },
+    { type: 'sitting' },
+    { type: 'sitting' },
+    { type: 'standing' }
+  ];
+
+  let sitting = 0;
+  let standing = 0;
+  
+  var deskTypes = desks.reduce(function(previous, desk) {
+      if(desk.type === 'sitting'){ return ++sitting; }
+      if(desk.type === 'standing') { return ++standing; }
+      return sitting;
+  }, { sitting: 0, standing: 0 });
+  
+  console.log(`sitting : ${sitting}   Standing: ${standing}`);
+  
+
+
+
+
+
 
 
