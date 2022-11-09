@@ -150,7 +150,6 @@ let result = trips.map(function(r){
 let speeds = result;
 
 
-
 /* ____________________________________Practice (filter)__________________________________________ */
 //from product array filter only the Electronics products
   let filteredProducts = [];
